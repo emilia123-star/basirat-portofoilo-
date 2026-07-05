@@ -2,7 +2,8 @@
 
 Welcome to my professional portfolio repository! This is a clean, responsive web space showcasing my skills, experience, and value as an SEO copywriter and content writer based in Lagos, Nigeria.
 
-✨ **Live Demo:** [https://github.com/emilia123-star/basirat-portofoilo-.git]
+✨ **Live Demo:** [https://emilia123-star.github.io/basirat-portofoilo-/](https://emilia123-star.github.io/basirat-portofoilo-/)
+
 
 ---
 
