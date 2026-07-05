@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <!-- Importing Lucide Icons via CDN for modern, crisp icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* --- Reset & Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* --- Header Navigation --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2563eb;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: #475569;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at top right, #eff6ff 0%, #f8fafc 100%);
+            padding-top: 100px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero-content h1 {
+            font-size: 44px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .hero-content h1 span {
+            color: #2563eb;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2563eb;
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        /* --- Section Defaults --- */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #0f172a;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 4px;
+            background-color: #2563eb;
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+
+        /* --- About Section --- */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #334155;
+            font-size: 16px;
+        }
+
+        .skills-grid {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .skills-grid h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: #f1f5f9;
+            color: #334155;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+
+        /* --- Dynamic Projects Gallery --- */
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #475569;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .projects-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+            opacity: 1;
+        }
+
+        .project-card.hide {
+            display: none;
+            opacity: 0;
+        }
+
+        .project-meta {
+            padding: 25px;
+        }
+
+        .project-meta h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        .project-meta p {
+            color: #475569;
+            font-size: 15px;
+            margin-bottom: 20px;
+            min-height: 70px;
+        }
+
+        .project-category-badge {
+            display: inline-block;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #2563eb;
+            background: #eff6ff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        .project-link {
+            font-weight: 600;
+            color: #2563eb;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* --- Contact Section --- */
+        .contact-box {
+            max-width: 550px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .form-element {
+            margin-bottom: 20px;
+        }
+
+        .form-element label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-element input, .form-element textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+            background-color: #f8fafc;
+            transition: border-color 0.2s;
+        }
+
+        .form-element input:focus, .form-element textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            background-color: #fff;
+        }
+
+        /* --- Footer & Social Channels --- */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 50px 0;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-icon {
+            background-color: #1e293b;
+            color: #94a3b8;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .social-icon:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .social-icon i {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* --- Responsive Viewports --- */
+        @media (max-width: 768px) {
+            .about-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero-content h1 {
+                font-size: 34px;
+            }
+            .nav-links {
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Basirat Portfolio</div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Crafting high-impact content that <span>ranks and converts</span>.</h1>
+                <p>Hi there! I'm Basirat Temitayo, a Lagos-based SEO copywriter. I build clear, search-optimized copy that amplifies brand visibility and engages global audiences.</p>
+                <a href="#projects" class="btn">Explore My Portfolio</a>
+            </div>
+        </div>
+    </section
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-layout">
+                <div class="about-text">
+                    <p>Hello! I'm Basirat Temitayo, an SEO copywriter and content writer based in Lagos, Nigeria. I create clear, engaging, and search-friendly content that helps businesses connect with their audience, improve online visibility, and achieve their goals.</p>
+                    <p>I enjoy transforming ideas into compelling blog posts, website copy, product descriptions, and marketing content that is both informative and persuasive. I pay close attention to research, readability, and SEO best practices to ensure every piece delivers value.</p>
+                    <p>As I continue growing my career, I'm committed to learning, delivering high-quality work, meeting deadlines, and building long-term relationships with clients around the world.</p>
+                </div>
+                <div class="skills-grid">
+                    <h3>Core Skills & Tools</h3>
+                    <div class="tag-container">
+                        <span class="tag">SEO Writing</span>
+                        <span class="tag">Copywriting</span>
+                        <span class="tag">Blog Writing</span>
+                        <span class="tag">Website Content</span>
+                        <span class="tag">Product Descriptions</span>
+                        <span class="tag">Keyword Research</span>
+                        <span class="tag">Content Strategy</span>
+                        <span class="tag">Proofreading & Editing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-box">
+                <form action="#" method="POST">
+                    <div class="form-element">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-element">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-element">
+                        <label for="msg">Message</label>
+                        <textarea id="msg" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="border: none; width: 100%; cursor: pointer;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Social Channels -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <!-- Replace the href '#' values with your real social media profile URLs -->
+                </a>
+                <a href="https://www.linkedin.com/in/basirat-temitayo-931093420" class="social-icon" target="_blank" aria-label="LinkedIn">
+                    <i data-lucide="linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/writewithbasirat?igsh=Y3hybGVleDN5Z2tq" class="social-icon" target="_blank" aria-label="Instagram">
+                    <i data-lucide="instagram"></i>
+                </a>
+                <a href="writewithbasirat@gmail.com" class="social-icon" target="_blank" aria-label="Mail">
+                    <i data-lucide="mail"></i>
+                </a>
+            </div>
+            <p>&copy; 2026 Basirat Temitayo. All right reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Execution -->
+    <script>
+        // Initialize Lucide SVG Icons automatically
+        lucide.createIcons();
+
+        // Project Gallery Filtering Logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove 'active' status from previous buttons and assign to clicked one
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const selectedFilter = button.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    
+                    if (selectedFilter === 'all' || cardCategory === selectedFilter) {
+                        card.classList.remove('hide');
+                    } else {
+                        card.classList.add('hide');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
