@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenNest Website Copy Sample | Basirat Portfolio</title>
+    <!-- Importing Lucide Icons via CDN for modern, crisp icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* --- Reset & Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            padding-top: 100px; /* Space for the fixed back button nav */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 850px;
+            margin: 0 auto;
+            padding-bottom: 100px;
+        }
+
+        /* --- Simple Header with Back Button --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .back-link {
+            font-weight: 600;
+            color: #2563eb;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #1d4ed8;
+        }
+
+        /* --- Project Presentation Header --- */
+        .project-header {
+            margin: 40px 0 20px 0;
+        }
+
+        .project-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        /* --- Project Overview Meta Box --- */
+        .meta-box {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #1e3f20; /* Green highlight for the eco project theme */
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #64748b;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-item p {
+            font-size: 15px;
+            color: #0f172a;
+            font-weight: 500;
+        }
+
+        /* --- Copywriting Display Blocks --- */
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            color: #0f172a;
+        }
+
+        .copy-block {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .copy-block-dark {
+            background-color: #1e3f20;
+            color: #fcfbfa;
+            border: none;
+        }
+
+        .element-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .copy-block-dark .element-tag {
+            color: #a3c2a0;
+        }
+
+        .copy-content {
+            font-size: 16px;
+            color: #334155;
+            margin-bottom: 15px;
+        }
+
+        .copy-block-dark .copy-content {
+            color: #e2e8f0;
+        }
+
+        .copy-content strong {
+            color: #0f172a;
+        }
+
+        .copy-block-dark .copy-content strong {
+            color: #ffffff;
+        }
+
+        /* Value prop list formatting */
+        .copy-content ul {
+            padding-left: 20px;
+        }
+
+        .copy-content li {
+            list-style-type: disc;
+            margin-bottom: 10px;
+        }
+
+        /* Visual Representation components for Buttons */
+        .cta-btn-preview {
+            display: inline-block;
+            background-color: #2d5a27;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 4px;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        .copy-block-dark .cta-btn-preview {
+            background-color: #ffffff;
+            color: #1e3f20;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simple Header Navigation -->
+    <header>
+        <div class="container" style="padding-bottom: 0;">
+            <nav>
+                <a href="index.html" class="back-link">
+                    <i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i> Back to Portfolio
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container">
+        
+        <div class="project-header">
+            <h1>Portfolio Sample: GreenNest Landing Page Copy</h1>
+        </div>
+
+        <!-- Project Meta Details -->
+        <div class="meta-box">
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Project</span>
+                    <p>E-commerce Copywriting</p>
+                </div>
+                <div class="meta-item">
+                    <span>Niche</span>
+                    <p>Sustainability & Eco-Home</p>
+                </div>
+                <div class="meta-item">
+                    <span>Objective</span>
+                    <p>Establish trust & drive conversions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1 -->
+        <h2 class="section-title">1. Hero Section</h2>
+        <div class="copy-block">
+            <span class="element-tag">Brand Name</span>
+            <div class="copy-content"><strong>GreenNest</strong></div>
+            
+            <span class="element-tag">Main Headline (H1)</span>
+            <div class="copy-content" style="font-size: 22px; font-weight: 700; color: #1e3f20;">Sustainable living starts at home.</div>
+            
+            <span class="element-tag">Sub-headline</span>
+            <div class="copy-content">Eco-friendly products for a cleaner home, a healthier you, and a better planet.</div>
+            
+            <span class="element-tag">Primary CTA Button</span>
+            <div class="cta-btn-preview">Shop Sustainable</div>
+        </div>
+
+        <!-- Section 2 -->
+        <h2 class="section-title">2. About Us / Mission Section</h2>
+        <div class="copy-block">
+            <span class="element-tag">Section Headline</span>
+            <div class="copy-content" style="font-size: 18px; font-weight: 700; color: #1e3f20;">Thoughtful products. Positive impact.</div>
+            
+            <span class="element-tag">Body Copy</span>
+            <div class="copy-content">At GreenNest, we believe small changes at home can create a big difference for our planet. That’s why we carefully curate sustainable, non-toxic, and effective products that make everyday living greener and simpler. Every product we offer is a step towards a cleaner, healthier future.</div>
+            
+            <span class="element-tag">Our Mission</span>
+            <div class="copy-content">To make sustainable living easy, affordable, and accessible for everyone.</div>
+            
+            <span class="element-tag">Our Promise</span>
+            <div class="copy-content">High-quality, eco-friendly products you can trust, delivered with care.</div>
+        </div>
+
+        <!-- Section 3 -->
+        <h2 class="section-title">3. Value Propositions (Why Choose Us)</h2>
+        <div class="copy-block">
+            <span class="element-tag">Section Headline</span>
+            <div class="copy-content" style="font-size: 18px; font-weight: 700; color: #1e3f20;">Better for you. Better for the planet.</div>
+            
+            <span class="element-tag">Key Pillars</span>
+            <div class="copy-content">
+                <ul>
+                    <li><strong>Sustainable Choices:</strong> Eco-friendly materials that reduce waste and protect nature.</li>
+                    <li><strong>Non-Toxic & Safe:</strong> Our products are free from harmful chemicals and safe for your family.</li>
+                    <li><strong>High Quality & Durable:</strong> Made to last and perform, so you get more value.</li>
+                    <li><strong>Affordable Prices:</strong> Sustainable living shouldn't cost the earth.</li>
+                    <li><strong>Fast & Reliable Delivery:</strong> Quick delivery to your door, because we value your time.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <h2 class="section-title">4. Footer CTA Section</h2>
+        <div class="copy-block copy-block-dark">
+            <span class="element-tag">Footer Headline</span>
+            <div class="copy-content" style="font-size: 20px; font-weight: 700;">Ready to live sustainably?</div>
+            <div class="copy-content">Explore our collection and make choices that are good for you and the planet.</div>
+            
+            <span class="element-tag">Secondary CTA Button</span>
+            <div class="cta-btn-preview">Shop Now</div>
+        </div>
+
+    </main>
+
+    <!-- JavaScript Execution for Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
